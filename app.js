@@ -58,7 +58,7 @@ app.use("/api", paymentBRoutes);
 
 //for heroku
 const path = require("path");
-if (procces.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV == "production") {
   app.get("*", function (req, res) {
     const index = path.join(__dirname, "build", "index.html");
     res.sendFile(index);
