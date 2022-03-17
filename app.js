@@ -58,12 +58,11 @@ app.use("/api", paymentBRoutes);
 
 //for heroku
 const path = require("path");
-if (process.env.NODE_ENV == "production") {
-  app.get("*", function (req, res) {
-    const index = path.join(__dirname, "build", "index.html");
-    res.sendFile(index);
+if (process.env.NODE_ENV) {
+  app.use(express.static(path.resolve(process.cwd(), "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(process.cwd(), "client/build/index.html"));
   });
-  // Step 2:
 }
 //starting server // listening on port
 app.listen(process.env.PORT, () => {
