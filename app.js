@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(passport.initialize());
-require("./strategy/jwtStrategy")(passport);
+require("./strategy/jwtstrategy")(passport);
 
 //my routes
 app.use("/api", authRoutes);
